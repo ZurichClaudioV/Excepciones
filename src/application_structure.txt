@@ -1,0 +1,33 @@
+● src
++---● app
+|   +--● employees
+|   |  |--employees.component.ts|.html|.css
+|   |  |
+|   |  +--● employee
+|   |  |  |--employee.component.ts|.html|.css
+|   |  
+|   +--● shared
+|   |     |--employee.service.ts (form group)
+|   |
+|   |--app.module.ts
+
+● src
++---● app
+|   +--● excepciones
+|   |  |--excepciones.component.ts|.html|.css
+|   |  |
+|   |  +--● excepcion
+|   |  |  |--excepcion.component.ts|.html|.css
+|   |  |  |  
+|   |  |  +--● excepciones-poliza
+|   |  |  |  |-- excepciones-poliza.component.ts|.html|.css
+|   |  |  |  |
+|   |  |  |  +--● excepcion-poliza
+|   |  |  |  |  |-- excepcion-poliza.component.ts|.html|.css
+|   |  
+|   +--● shared
+|   |     |--excepcion.service.ts (form group)
+|   |     |--excepcion-poliza.service.ts (form group)
+|   |
+|   |--app.module.ts
+
