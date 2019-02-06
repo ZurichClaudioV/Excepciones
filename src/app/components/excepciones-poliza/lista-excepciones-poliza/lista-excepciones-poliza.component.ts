@@ -34,53 +34,13 @@ export class ListaExcepcionesPolizaComponent extends MatPaginatorIntl implements
   firstPageLabel = 'Primera página'; // tooltip primera página
 
   displayedColumns: string[] = ['POL_SERIE', 'POL_NRO', 'FEC_INICIO', 'GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS', 'actions'];
-  // displayedColumns: string[] = ['POL_SERIE', 'POL_NRO', 'FEC_INICIO', 'IND_GTO_PBS', 'GTO_PR_BAS', 'TP_GTOPRBAS', 'IND_GTO_PAG', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'IND_GTO_PRR', 'GTO_PR_REC', 'TP_GTOPRREC', 'IND_PREM_PE', 'PREMIO_PERM', 'TP_PREM_PER', 'IND_GTO_TRA', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'IND_CAR_RES', 'CAR_RES_TOT', 'IND_CAR_REP', 'CAR_RES_PAR', 'IND_CAR_FIJ', 'CARGO_FIJO', 'IND_GTO_FON', 'GTO_FONDOS', 'actions'];
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
-  // ngOnChanges() {
-  //   this.service.listaExcepcionesPoliza().subscribe(res => {
-  //     this.datos = res;
-  //     this.listData = new MatTableDataSource(this.datos);
-  //     this.listData.sort = this.sort;
-  //     this.listData.paginator = this.paginator;
-  //     this.listData.filterPredicate = (data, filter) => {
-  //       return this.displayedColumns.some(ele => {
-  //         return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
-  //       });
-  //     };
-  //   }, err => {
-  //     console.log(err);
-  //     this.isLoadingResults = false;
-  //   });
-  // }
-
   ngOnInit() {
       this.refrescarData();
-      //   this.service.listaExcepcionesPoliza().subscribe(res => {
-      //   this.datos = res;
-      //   this.listData = new MatTableDataSource(this.datos);
-      //   this.listData.sort = this.sort;
-      //   this.listData.paginator = this.paginator;
-      //   this.listData.filterPredicate = (data, filter) => {
-      //     return this.displayedColumns.some(ele => {
-      //       return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
-      //     });
-      //   };
-      // }, err => {
-      //   console.log(err);
-      //   this.isLoadingResults = false;
-      // });
-
-      // this.listData = new MatTableDataSource<ExcepcionPoliza>(lista);
-      // this.listData.sort = this.sort;
-      // this.listData.paginator = this.paginator;
-      // this.listData.filterPredicate = (data, filter) => {
-      //   return this.displayedColumns.some(ele => {
-      //     return ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1;
-      //   });
-      // };
     }
 
     // Formatea el conteo de los items contados de 'of' a 'de'
@@ -149,6 +109,4 @@ export class ListaExcepcionesPolizaComponent extends MatPaginatorIntl implements
       this.isLoadingResults = false;
     });
 }
-
-
 }

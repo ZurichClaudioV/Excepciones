@@ -25,10 +25,6 @@ export class ExcepcionService {
 
     // no usable
     FILLER: new FormControl(''),
-    // EXCEPCONDL0: new FormControl(''),
-    // EXCEPCONDL1: new FormControl(''),
-    // EXCEPCONDL2: new FormControl(''),
-    // EXCEPCONDL3: new FormControl('')
   });
 
 
@@ -43,10 +39,6 @@ export class ExcepcionService {
 
       // no usable
       FILLER: ''
-      // EXCEPCONDL0: '',
-      // EXCEPCONDL1: '',
-      // EXCEPCONDL2: '',
-      // EXCEPCONDL3: ''
     });
   }
 
@@ -59,19 +51,8 @@ export class ExcepcionService {
     return this.http.post<Excepcion>(environment.apiUrl + '/Excepciones', formData);
   }
 
-  refreshList(form: FormGroup) {
-    // this.http.get(environment.apiUrl + '/ExcepcionesPolizas')
-    // .toPromise().then(res => this.list = res as ExcepcionPoliza[]);
-    this.form.reset();
-  }
-
   listaExcepciones(): Observable<Excepcion[]> {
     return this.http.get<Excepcion[]>(environment.apiUrl + '/Excepciones');
-    // return Observable.create(observer => {
-    //   this.http.get(environment.apiUrl + '/ExcepcionesPolizas');
-    // });
-    // return this.http.get(environment.apiUrl + '/ExcepcionesPolizas')
-    // .toPromise().then(res => this.list = res as ExcepcionPoliza[]);
    }
 
    obtenerExcepcionPorId(RowId: string): Observable<Excepcion> {

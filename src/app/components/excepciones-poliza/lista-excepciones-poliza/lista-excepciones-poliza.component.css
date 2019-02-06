@@ -22,25 +22,7 @@
     hyphens: auto;
 }
 
-
-/* mat-header-cell {
-    display: flex;
-    justify-content: flex-end;
-} */
-
 .mat-column- {
     display: flex;
     justify-content: flex-end;
 }
-
-
-/* mat-cell {
-    display: flex;
-    justify-content: flex-end;
-} */
-
-
-/* .container {
-    max-width: none;
-    min-width: none;
-} */

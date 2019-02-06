@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: 'AIzaSyAA1AQcYR7aofPu5kbA_efNM5f2cDVfDkQ',
-    authDomain: 'amcrud-4a55c.firebaseapp.com',
-    databaseURL: 'https://amcrud-4a55c.firebaseio.com/',
-    projectId: 'amcrud-4a55c',
-    storageBucket: 'amcrud-4a55c.appspot.com',
-    messagingSenderId: '104635622705'
-  },
+  // firebaseConfig: {
+  //   apiKey: 'AIzaSyAA1AQcYR7aofPu5kbA_efNM5f2cDVfDkQ',
+  //   authDomain: 'amcrud-4a55c.firebaseapp.com',
+  //   databaseURL: 'https://amcrud-4a55c.firebaseio.com/',
+  //   projectId: 'amcrud-4a55c',
+  //   storageBucket: 'amcrud-4a55c.appspot.com',
+  //   messagingSenderId: '104635622705'
+  // },
   apiUrl: 'http://10.117.3.69/WebApplication6/api'
 };
 

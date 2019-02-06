@@ -5,9 +5,4 @@ export class Excepcion {
     NUM_SOLIC: number;
     NUM_POLIZ: number;
     SER_POLIZ: string;
-    // FILLER: string;
-    // EXCEPCONDL0: string;
-    // EXCEPCONDL1: string;
-    // EXCEPCONDL2: string;
-    // EXCEPCONDL3: string;
 }

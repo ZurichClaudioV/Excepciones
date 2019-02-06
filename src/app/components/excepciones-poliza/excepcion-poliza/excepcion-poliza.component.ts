@@ -54,9 +54,6 @@ export class ExcepcionPolizaComponent implements OnInit {
 
 
   setValorCheck(controlPadre: string, controlHijoUno: string, controlHijoDos?: string) {
-    // console.log(formControl);
-    // console.log(this.service.form.controls[`${formControl}`].value);
-    // console.log(this.service.form.controls[`${controlPadre}`].value);
     if (this.service.form.controls[`${controlPadre}`].value) {
       this.service.form.controls[`${controlPadre}`].setValue(1);
 
@@ -73,9 +70,12 @@ export class ExcepcionPolizaComponent implements OnInit {
 
       if (controlHijoDos != null) {
         this.service.form.controls[`${controlHijoUno}`].disable();
+        this.service.form.controls[`${controlHijoUno}`].value('');
         this.service.form.controls[`${controlHijoDos}`].disable();
+        this.service.form.controls[`${controlHijoDos}`].value('');
       } else {
         this.service.form.controls[`${controlHijoUno}`].disable();
+        this.service.form.controls[`${controlHijoUno}`].value('');
       }
     }
   }

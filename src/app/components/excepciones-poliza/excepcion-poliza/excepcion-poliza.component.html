@@ -21,10 +21,6 @@
             </div>
             <div class="col-sm-4">
                 <mat-form-field>
-                    <!-- <input type="number" formControlName="FEC_INICIO" matInput placeholder="Fec Inicio*" required maxlength="8">
-                    <mat-error *ngIf="service.form.controls['FEC_INICIO'].errors?.required">Este campo es obligatorio.</mat-error>
-                    <mat-error *ngIf="service.form.controls['FEC_INICIO'].errors?.minlength">Debe tener un largo de 8 números.</mat-error>
-                    <mat-error *ngIf="service.form.controls.FEC_INICIO.errors?.validaFechaMenorQueHoy">FEC_INICIO en formato ejemplo "20190101" debe ser menor a la fecha de hoy.</mat-error> -->
                     <input matInput [matDatepicker]="picker" formControlName="FEC_INICIO" placeholder="Fecha de Inicio" required [min]=minDate>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -176,10 +172,6 @@
         <div class="button-row">
             <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Grabar</button>
             <button mat-raised-button color="warn" (click)="onClear()">Limpiar</button>
-            <!-- <div class="col-sm-4">
-                <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Grabar</button>
-                <button mat-raised-button color="warn" (click)="onClear()">Limpiar</button>
-            </div> -->
         </div>
     </div>
 </form>

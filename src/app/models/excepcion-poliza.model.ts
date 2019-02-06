@@ -31,16 +31,4 @@ export class ExcepcionPoliza {
     IND_CAR_REP: number;
     IND_PREM_PE: number;
     IND_GTO_TRA: number;
-
-    // NUM_EXCEP: number;
-    // POL_NUMASEG: number;
-    // TASA_GARANT: number;
-    // FORMA_CALC: number;
-    // GTO_CAPITAL: number;
-    // CAR_AD_PAGO: number;
-    // MTO_RENTA: number;
-    // PERIO_RENTA: string;
-    // IND_GTO_CAP: number;
-    // CAR_CMB_MOD: number;
-    // FILLER: string;
 }

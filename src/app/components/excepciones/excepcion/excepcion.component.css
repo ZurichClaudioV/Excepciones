@@ -2,25 +2,3 @@
     display: flex;
     justify-content: flex-end;
 }
-
-
-/* .mat-table-sticky:first-child {
-    border-right: 1px solid #e0e0e0;
-}
-
-.mat-table-sticky:last-child {
-    border-left: 1px solid #e0e0e0;
-} */
-
-
-/* .mat-cell {
-    font-size: 12px;
-    font-family: Verdana, Sans-Serif;
-    display: table-cell;
-    height: 48px;
-    vertical-align: middle;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-    border-left: 2px solid rgba(0, 0, 0, 0.12);
-    border-right: 2px solid rgba(0, 0, 0, 0.12);
-} */

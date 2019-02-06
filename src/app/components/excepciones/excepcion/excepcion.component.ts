@@ -28,9 +28,6 @@ export class ExcepcionComponent implements OnInit {
 
   displayedColumns: string[] = ['POL_SERIE', 'POL_NRO', 'FEC_INICIO', 'GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS'];
 
-  // @ViewChild(MatSort) sort: MatSort;
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-
   ngOnInit() {
 
     this.populateListaNumExc();
@@ -82,16 +79,9 @@ export class ExcepcionComponent implements OnInit {
           this.isVisible = true;
           this.datos.push(res);
           this.listData = new MatTableDataSource(this.datos);
-          // this.listData.sort = this.sort;
-          // this.listData.paginator = this.paginator;
         } else {
           this.isVisible = false;
         }
-        // this.listData.filterPredicate = (data, filter) => {
-        //   return this.displayedColumns.some(ele => {
-        //     return ele != 'actions' && data[ele].toString().toLowerCase().indexOf(filter) != -1;
-        //   });
-        // };
       }, err => {
         console.log(err);
         this.isLoadingResults = false;

@@ -180,8 +180,13 @@ mat-footer-row mat-footer-cell {
 }
 
 .mat-toolbar.mat-primary {
-    background: #007bff;
-    color: #fff;
+    background: #003399 !important;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.bg-primary {
+    background-color: #ffffff !important;
 }
 
 
