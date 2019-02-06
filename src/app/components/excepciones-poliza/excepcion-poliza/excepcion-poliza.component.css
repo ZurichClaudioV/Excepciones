@@ -1,0 +1,47 @@
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+    background-color: blue !important;
+    /* Red background for example */
+}
+
+
+/* .example-toolbar {
+    position: fixed;
+    
+    z-index: 2;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  } */
+
+
+/* mat-toolbar {
+    --default-height: 50px;
+}
+
+mat-toolbar[color="primary"] {
+    top: 0;
+    position: fixed;
+    height: var(--default-height);
+}
+
+mat-toolbar[color="warn"] {
+    position: sticky;
+    top: var(--default-height);
+}
+
+#frugalmap {
+    height: 300px;
+    background-color: #EEE;
+} */

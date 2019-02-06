@@ -1,0 +1,185 @@
+<mat-toolbar class="example-toolbar animated fadeIn fast" color="primary">
+    <span sty> {{service.form.controls['RowId'].value?"Editar Excepción Póliza": "Nueva Excepción Póliza"}} </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form animated fadeIn fast" (submit)="onSubmit()" autocomplete="off">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="hidden" formControlName="RowId">
+                <mat-form-field>
+                    <input formControlName="POL_SERIE" matInput placeholder="Serie*" maxlength="1" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="POL_NRO" matInput placeholder="Número Póliza*" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <!-- <input type="number" formControlName="FEC_INICIO" matInput placeholder="Fec Inicio*" required maxlength="8">
+                    <mat-error *ngIf="service.form.controls['FEC_INICIO'].errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="service.form.controls['FEC_INICIO'].errors?.minlength">Debe tener un largo de 8 números.</mat-error>
+                    <mat-error *ngIf="service.form.controls.FEC_INICIO.errors?.validaFechaMenorQueHoy">FEC_INICIO en formato ejemplo "20190101" debe ser menor a la fecha de hoy.</mat-error> -->
+                    <input matInput [matDatepicker]="picker" formControlName="FEC_INICIO" placeholder="Fecha de Inicio" required [min]=minDate>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_GTO_PBS" (change)="setValorCheck('IND_GTO_PBS', 'GTO_PR_BAS', 'TP_GTOPRBAS');">Decuento prima básica</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="GTO_PR_BAS" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="TP_GTOPRBAS" matInput placeholder="Tope en UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_GTO_PAG" (change)="setValorCheck('IND_GTO_PAG', 'GTO_X_PAGO', 'TP_GTOXPAGO');">Gasto por pago</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="GTO_X_PAGO" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="TP_GTOXPAGO" matInput placeholder="Tope en UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_GTO_PRR" (change)="setValorCheck('IND_GTO_PRR', 'GTO_PR_REC', 'TP_GTOPRREC');">Gasto prima rescatada</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="GTO_PR_REC" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="TP_GTOPRREC" matInput placeholder="Tope en UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_PREM_PE" (change)="setValorCheck('IND_PREM_PE', 'PREMIO_PERM', 'TP_PREM_PER');">Premio permanencia</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="PREMIO_PERM" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="TP_PREM_PER" matInput placeholder="Tope en UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_GTO_TRA" (change)="setValorCheck('IND_GTO_TRA', 'GTO_X_TRASP', 'TP_GTO_TRAS');">Cargo por traspaso</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="GTO_X_TRASP" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="TP_GTO_TRAS" matInput placeholder="Tope en UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_CAR_RES" (change)="setValorCheck('IND_CAR_RES', 'CAR_RES_TOT', null);">Cargo rescate total</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="CAR_RES_TOT" matInput placeholder="Monto UF">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_CAR_REP" (change)="setValorCheck('IND_CAR_REP', 'CAR_RES_PAR', null);">Cargo rescate parcial</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="CAR_RES_PAR" matInput placeholder="Monto UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_CAR_FIJ" (change)="setValorCheck('IND_CAR_FIJ', 'CARGO_FIJO', null);">Cargo fijo</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="CARGO_FIJO" matInput placeholder="Monto UF">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <section class="example-section">
+                    <mat-checkbox formControlName="IND_GTO_FON" (change)="setValorCheck('IND_GTO_FON', 'GTO_FONDOS', null);">Gasto fondo</mat-checkbox>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="GTO_FONDOS" matInput placeholder="Porcentaje">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Grabar</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Limpiar</button>
+            <!-- <div class="col-sm-4">
+                <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Grabar</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Limpiar</button>
+            </div> -->
+        </div>
+    </div>
+</form>

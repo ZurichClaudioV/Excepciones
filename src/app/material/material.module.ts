@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as Material from '@angular/material';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 @NgModule({
 
@@ -41,6 +42,7 @@ import * as Material from '@angular/material';
     Material.MatPaginatorModule,
     Material.MatDialogModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}]
 })
 export class MaterialModule { }

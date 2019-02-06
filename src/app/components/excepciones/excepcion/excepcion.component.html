@@ -1,0 +1,194 @@
+<mat-toolbar class="example-toolbar animated fadeIn fast" color="primary">
+    <span> {{service.form.controls['RowId'].value?"Editar Excepción Póliza": "Nueva Excepción Póliza"}} </span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form animated fadeIn fast" (submit)="onSubmit()" autocomplete="off">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="hidden" formControlName="RowId">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="numExc" placeholder="Número Excepción" formControlName="NUM_EXCEP" (selectionChange)="onSelectedChange(this.numExc)" required>
+                        <mat-option value="0">Seleccione una opción</mat-option>
+                        <mat-option *ngFor="let numExc of listaNumExc" [value]="numExc">{{ numExc }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="service.form.controls.NUM_EXCEP.errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="service.form.controls.NUM_EXCEP.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="NUM_SOLIC" matInput placeholder="Número de Solicitud*" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- <input type="hidden" formControlName="NUM_COTIZ">
+        <input type="hidden" formControlName="NUM_POLIZ">
+        <input type="hidden" formControlName="NUM_POLIZ">
+        <input type="hidden" formControlName="SER_POLIZ"> -->
+
+        <!-- <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="NUM_COTIZ" matInput placeholder="NUM_COTIZ*" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="NUM_POLIZ" matInput placeholder="NUM_POLIZ*" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field>
+                    <input formControlName="SER_POLIZ" matInput placeholder="SER_POLIZ*" required>
+                    <mat-error>Este campo es obligatorio.</mat-error>
+                </mat-form-field>
+            </div>
+        </div> -->
+
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Grabar</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Limpiar</button>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="isVisible" class="container">
+    <mat-table [dataSource]="listData" class="table-bordered">
+        <ng-container matColumnDef="POL_SERIE" sticky>
+            <mat-header-cell *matHeaderCellDef>POL_SERIE</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.POL_SERIE}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="POL_NRO" sticky>
+            <mat-header-cell *matHeaderCellDef>POL_NRO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.POL_NRO}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="FEC_INICIO" sticky>
+            <mat-header-cell *matHeaderCellDef>FEC_INICIO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.FEC_INICIO}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_GTO_PBS">
+            <mat-header-cell *matHeaderCellDef>IND_GTO_PBS</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_GTO_PBS}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTO_PR_BAS">
+            <mat-header-cell *matHeaderCellDef>GTO_PR_BAS</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GTO_PR_BAS}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TP_GTOPRBAS">
+            <mat-header-cell *matHeaderCellDef>TP_GTOPRBAS</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TP_GTOPRBAS}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_GTO_PAG">
+            <mat-header-cell *matHeaderCellDef>IND_GTO_PAG</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_GTO_PAG}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTO_X_PAGO">
+            <mat-header-cell *matHeaderCellDef>GTO_X_PAGO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GTO_X_PAGO}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TP_GTOXPAGO">
+            <mat-header-cell *matHeaderCellDef>TP_GTOXPAGO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TP_GTOXPAGO}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_GTO_PRR">
+            <mat-header-cell *matHeaderCellDef>IND_GTO_PRR</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_GTO_PRR}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTO_PR_REC">
+            <mat-header-cell *matHeaderCellDef>GTO_PR_REC</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GTO_PR_REC}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TP_GTOPRREC">
+            <mat-header-cell *matHeaderCellDef>TP_GTOPRREC</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TP_GTOPRREC}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_PREM_PE">
+            <mat-header-cell *matHeaderCellDef>IND_PREM_PE</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_PREM_PE}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="PREMIO_PERM">
+            <mat-header-cell *matHeaderCellDef>PREMIO_PERM</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.PREMIO_PERM}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TP_PREM_PER">
+            <mat-header-cell *matHeaderCellDef>TP_PREM_PER</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TP_PREM_PER}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_GTO_TRA">
+            <mat-header-cell *matHeaderCellDef>IND_GTO_TRA</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_GTO_TRA}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTO_X_TRASP">
+            <mat-header-cell *matHeaderCellDef>GTO_X_TRASP</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GTO_X_TRASP}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TP_GTO_TRAS">
+            <mat-header-cell *matHeaderCellDef>TP_GTOTRAS</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.TP_GTO_TRAS}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_CAR_RES">
+            <mat-header-cell *matHeaderCellDef>IND_CAR_RES</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_CAR_RES}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CAR_RES_TOT">
+            <mat-header-cell *matHeaderCellDef>CAR_RES_TOT</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.CAR_RES_TOT}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_CAR_REP">
+            <mat-header-cell *matHeaderCellDef>IND_CAR_REP</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_CAR_REP}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CAR_RES_PAR">
+            <mat-header-cell *matHeaderCellDef>CAR_RES_PAR</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.CAR_RES_PAR}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_CAR_FIJ">
+            <mat-header-cell *matHeaderCellDef>IND_CAR_FIJ</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_CAR_FIJ}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CARGO_FIJO">
+            <mat-header-cell *matHeaderCellDef>CARGO_FIJO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.CARGO_FIJO}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="IND_GTO_FON">
+            <mat-header-cell *matHeaderCellDef>IND_GTO_FON</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.IND_GTO_FON}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="GTO_FONDOS" stickyEnd>
+            <mat-header-cell *matHeaderCellDef>GTO_FONDOS</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.GTO_FONDOS}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                Loading data...
+            </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                No data...
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    </mat-table>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator> -->
+</div>
