@@ -25,10 +25,6 @@ form.normal-form {
     padding: 5%;
 }
 
-.controles-container>* {
-    width: 100%;
-}
-
 .add-bottom-padding {
     padding-bottom: 10px;
 }
@@ -217,4 +213,16 @@ mat-footer-row mat-footer-cell {
 
 .fadeIn {
     animation-name: fadeIn;
+}
+
+.mat-header-cell {
+    font-size: 14px !important;
+}
+
+.mat-cell {
+    place-content: left !important;
+}
+
+.mat-sort-header-button {
+    text-align: left !important;
 }
