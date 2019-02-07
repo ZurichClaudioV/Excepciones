@@ -219,15 +219,15 @@ export class ExcepcionPolizaService {
 
   populateForm(excepcionPoliza) {
     // Descomponemos la fecha obtenida de la fila para luego formatearla
-    let year = excepcionPoliza.FEC_INICIO.toString().substring(0, 4);
-    let month = excepcionPoliza.FEC_INICIO.toString().substring(4, 6);
-    let day = excepcionPoliza.FEC_INICIO.toString().substring(6, 8);
+    // let year = excepcionPoliza.FEC_INICIO.toString().substring(0, 4);
+    // let month = excepcionPoliza.FEC_INICIO.toString().substring(4, 6);
+    // let day = excepcionPoliza.FEC_INICIO.toString().substring(6, 8);
 
     // Creamos una variable date con nuestro string formateado y procedemos a naturalizar su valor con el de su respectivo timezone
     // ya que sin hacer esto el datepicker quedara un día diferenciado según la diferencia por defecto con la de la nueva zona horaria.
-    let dateSet = new Date(`${year}-${month}-${day}`);
-    dateSet.setMinutes(dateSet.getMinutes() + dateSet.getTimezoneOffset());
-    excepcionPoliza.FEC_INICIO = dateSet;
+    // let dateSet = new Date(`${year}-${month}-${day}`);
+    // dateSet.setMinutes(dateSet.getMinutes() + dateSet.getTimezoneOffset());
+    // excepcionPoliza.FEC_INICIO = dateSet;
 
     // Omitimos campos no utilizados por el frontend con ayuda del lodash para evitar errores de referencia.
     this.form.setValue(_.omit(excepcionPoliza, 'POL_NUMASEG', 'NUM_EXCEP',

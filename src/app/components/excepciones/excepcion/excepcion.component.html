@@ -9,7 +9,7 @@
             <div class="col-sm-4">
                 <input type="hidden" formControlName="RowId">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="numExc" placeholder="Número Excepción" formControlName="NUM_EXCEP" (selectionChange)="onSelectedChange(this.numExc)" required>
+                    <mat-select [(ngModel)]="selected2" placeholder="Número Excepción" formControlName="NUM_EXCEP" (selectionChange)="onSelectedChange(this.selected2)" required>
                         <mat-option value="0">Seleccione una opción</mat-option>
                         <mat-option *ngFor="let numExc of listaNumExc" [value]="numExc">{{ numExc }}</mat-option>
                     </mat-select>

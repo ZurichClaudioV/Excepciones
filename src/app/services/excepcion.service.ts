@@ -17,7 +17,7 @@ export class ExcepcionService {
 
   form: FormGroup = new FormGroup ({
     RowId: new FormControl(null),
-    NUM_EXCEP: new FormControl('', [Validators.required, selectDistintoCero]),
+    NUM_EXCEP: new FormControl([0], [Validators.required, selectDistintoCero]),
     NUM_COTIZ: new FormControl(''),
     NUM_SOLIC: new FormControl('', Validators.required),
     NUM_POLIZ: new FormControl(''),
@@ -31,7 +31,7 @@ export class ExcepcionService {
   initializeFormGroup() {
     this.form.setValue({
       RowId: null,
-      NUM_EXCEP: '',
+      NUM_EXCEP: [0],
       NUM_COTIZ: '',
       NUM_SOLIC: '',
       NUM_POLIZ: '',

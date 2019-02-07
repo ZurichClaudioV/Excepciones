@@ -5,6 +5,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { ExcepcionPolizaService } from '../../../services/excepcion-poliza.service';
 import { ExcepcionPoliza } from 'src/app/models/excepcion-poliza.model';
 
+
 @Component({
   selector: 'app-excepcion',
   templateUrl: './excepcion.component.html',
@@ -18,7 +19,7 @@ export class ExcepcionComponent implements OnInit {
               private servicePoli: ExcepcionPolizaService) { }
 
   listaNumExc: Number[];
-  numExc;
+  selected2;
   seleccione = 'Seleccione';
 
   listData: MatTableDataSource<ExcepcionPoliza>;
@@ -26,7 +27,7 @@ export class ExcepcionComponent implements OnInit {
   isVisible = false;
   isLoadingResults = true;
 
-  displayedColumns: string[] = ['POL_SERIE', 'POL_NRO', 'FEC_INICIO', 'GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS'];
+  displayedColumns: string[] = ['GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS'];
 
   ngOnInit() {
 
@@ -35,6 +36,10 @@ export class ExcepcionComponent implements OnInit {
     if (!this.service.form.get('RowId').value) {
       this.service.form.reset();
       this.service.initializeFormGroup();
+    } else {
+      this.selected2 = this.service.form.get('NUM_EXCEP').value;
+      this.onSelectedChange(this.selected2);
+      // this.service.form.controls['NUM_EXCEP'].setValue(this.service.form.);
     }
   }
 
@@ -70,10 +75,10 @@ export class ExcepcionComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onSelectedChange(NUM_EXC: Number) {
+  onSelectedChange(selected2: Number) {
 
-    if (NUM_EXC != 0) {
-      this.servicePoli.obtenerExcepcionPolizaPorNumExc(NUM_EXC).subscribe(res => {
+    if (selected2 != 0) {
+      this.servicePoli.obtenerExcepcionPolizaPorNumExc(selected2).subscribe(res => {
         if (res != null) {
           this.datos = [];
           this.isVisible = true;
@@ -87,6 +92,7 @@ export class ExcepcionComponent implements OnInit {
         this.isLoadingResults = false;
       });
     } else {
+      this.selected2 = 0;
       this.datos = [];
       this.isVisible = false;
     }

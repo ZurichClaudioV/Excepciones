@@ -22,6 +22,17 @@ export class ExcepcionPolizaComponent implements OnInit {
     if (!this.service.form.get('RowId').value) {
       this.service.form.reset();
       this.service.initializeFormGroup();
+    } else {
+      // Descomponemos la fecha obtenida de la fila para luego formatearla
+      let year = this.service.form.get('FEC_INICIO').value.toString().substring(0, 4);
+      let month = this.service.form.get('FEC_INICIO').value.toString().substring(4, 6);
+      let day = this.service.form.get('FEC_INICIO').value.toString().substring(6, 8);
+
+      // Creamos una variable date con nuestro string formateado y procedemos a naturalizar su valor con el de su respectivo timezone
+      // ya que sin hacer esto el datepicker quedara un día diferenciado según la diferencia por defecto con la de la nueva zona horaria.
+      let dateSet = new Date(`${year}-${month}-${day}`);
+      dateSet.setMinutes(dateSet.getMinutes() + dateSet.getTimezoneOffset());
+      this.service.form.get('FEC_INICIO').setValue(dateSet);
     }
   }
 

@@ -6,6 +6,10 @@
     margin: 0px 40px;
 } */
 
+body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
 .fill-remaining-space {
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
@@ -183,10 +187,6 @@ mat-footer-row mat-footer-cell {
     background: #003399 !important;
     color: #ffffff;
     border-radius: 5px;
-}
-
-.bg-primary {
-    background-color: #ffffff !important;
 }
 
 
