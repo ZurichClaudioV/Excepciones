@@ -10,8 +10,8 @@
                 <input type="hidden" formControlName="RowId">
                 <mat-form-field>
                     <mat-select [(ngModel)]="selected" placeholder="Plan" formControlName="Plan" required>
-                        <mat-option value="0">Seleccione una opción</mat-option>
-                        <mat-option *ngFor="let plan of listaPlan" [value]="plan.Plan">{{ plan.NombrePlan }}</mat-option>
+                        <mat-option matTooltip="Seleccione una opción" [matTooltipPosition]="position" value="0">Seleccione una opción</mat-option>
+                        <mat-option matTooltip="{{plan.NombrePlan}}" [matTooltipPosition]="position" *ngFor="let plan of listaPlan" [value]="plan.Plan">{{ plan.NombrePlan }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="service.formCapital.controls.Plan.errors?.required">Este campo es obligatorio.</mat-error>
                     <mat-error *ngIf="service.formCapital.controls.Plan.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
@@ -22,8 +22,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input type="number" formControlName="Capital" matInput placeholder="Capital*" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <input type="number" formControlName="Capital" matInput placeholder="Capital*" maxlength="5" required>
+                    <mat-error *ngIf="service.formCapital.controls.Capital.errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="service.formCapital.controls.Capital.errors?.limiteCapital">Debe ingresar un máximo de 5 caracteres.</mat-error>
                 </mat-form-field>
             </div>
         </div>

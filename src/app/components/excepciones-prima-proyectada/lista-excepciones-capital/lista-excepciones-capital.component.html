@@ -12,29 +12,29 @@
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="Plan">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>N° Plan</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-0">N° Plan</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.Plan}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="NombrePlan">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Plan</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.NombrePlan}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-4">Plan</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="col-sm-4">{{element.NombrePlan}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="Capital">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Capital</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.Capital}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Capital</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="col-sm-2">{{element.Capital}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="PrimaAnual">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Prima Anual</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.PrimaAnual}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Prima Anual</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="col-sm-2">{{element.PrimaAnual}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="PrimaMensual">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Prima Mensual</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.PrimaMensual}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Prima Mensual</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="col-sm-2">{{element.PrimaMensual}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions" stickyEnd>
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-header-cell *matHeaderCellDef class="col-sm-2"></mat-header-cell>
+            <mat-cell *matCellDef="let row" class="col-sm-2">
                 <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
                 <button mat-icon-button color="warn" (click)="onDelete(row.RowId)"><mat-icon>delete_outline</mat-icon></button>
             </mat-cell>

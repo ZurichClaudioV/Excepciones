@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExcepcionPrimaProyectadaService } from '../../../services/excepcion-prima-proyectada.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, TooltipPosition } from '@angular/material';
 import { ExcepcionPrimaProyectada } from 'src/app/models/excepcion-prima-proyectada.model';
 
 @Component({
@@ -17,16 +17,19 @@ export class ExcepcionCapitalComponent implements OnInit {
 
 listaPlan: ExcepcionPrimaProyectada[];
 selected;
-seleccione = 'Seleccione';
+position: TooltipPosition = 'right';
 
   ngOnInit() {
     this.populateListaPlan();
     if (!this.service.formCapital.get('RowId').value) {
         this.service.formCapital.reset();
         this.service.initializeFormGroupCapital();
+        this.service.formCapital.get('Plan').enable();
         this.service.formCapital.get('Capital').enable();
     } else {
-      this.selected = this.service.formCapital.get('Plan').value;
+      this.selected = this.service.formCapital.get('NombrePlan').value;
+      console.log(this.selected);
+      this.service.formCapital.get('Plan').disable();
       this.service.formCapital.get('Capital').disable();
       // this.onSelectedChange(this.selected);
     }
@@ -40,15 +43,23 @@ seleccione = 'Seleccione';
 
   async onSubmit() {
     if (this.service.formCapital.valid) {
+      let plan = this.service.formCapital.get('Plan').value;
+      let capital = this.service.formCapital.get('Capital').value;
+      let existe = this.listaPlan.filter(x => x.Plan == plan && x.Capital == capital)[0];
+
       if (!this.service.formCapital.get('RowId').value) {
         // Entra acá si es un ingreso nuevo
-        this.service.ingresarCapital(this.service.formCapital.value);
-        this.service.formCapital.reset();
-        this.service.initializeFormGroupCapital();
-        this.notificationService.success(':: Excepción capital ingresada exitosamente');
-        this.onClose();
+        if (existe == undefined || existe == null) {
+          await this.service.ingresarCapital(this.service.formCapital.value);
+          this.service.formCapital.reset();
+          this.service.initializeFormGroupCapital();
+          this.notificationService.success(':: Excepción capital ingresada exitosamente');
+          this.onClose();
+        } else {
+          this.notificationService.warn(':: Excepción capital ya existe');
+        }
       } else {
-        // Entra acá si viene con key y corresponde a un update
+        // Entra acá si viene con key y corresponde a un update, no se requiere validar existencia puesto que no se puede modificar
         await this.service.modificarExcepcionCapital(this.service.formCapital.getRawValue());
         this.service.formCapital.reset();
         this.service.initializeFormGroupCapital();
@@ -68,5 +79,9 @@ seleccione = 'Seleccione';
       this.service.listaExcepcionCapital().subscribe(res => {
       this.listaPlan = res;
     });
+  }
+
+  get userName() {
+    return this.service.formCapital.get('userName');
   }
 }

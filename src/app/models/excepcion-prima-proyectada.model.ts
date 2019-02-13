@@ -1,5 +1,5 @@
 export class ExcepcionPrimaProyectada {
-    RowId?: string;
+    RowId: number;
     Plan: number;
     NombrePlan: string;
     Capital: number;

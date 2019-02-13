@@ -16,25 +16,25 @@
             <mat-cell *matCellDef="let element">{{element.Plan}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="NombrePlan">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Plan</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.NombrePlan}}</mat-cell>
+            <mat-header-cell class="col-sm-4" *matHeaderCellDef mat-sort-header>Plan</mat-header-cell>
+            <mat-cell class="col-sm-4" *matCellDef="let element">{{element.NombrePlan}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="Capital">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Edad</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.Capital}}</mat-cell>
+            <mat-header-cell class="col-sm-2" *matHeaderCellDef mat-sort-header>Edad</mat-header-cell>
+            <mat-cell class="col-sm-2" *matCellDef="let element">{{element.Capital}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="PrimaAnual">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Prima Anual</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.PrimaAnual}}</mat-cell>
+            <mat-header-cell class="col-sm-2" *matHeaderCellDef mat-sort-header>Prima Anual</mat-header-cell>
+            <mat-cell class="col-sm-2" *matCellDef="let element">{{element.PrimaAnual}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="PrimaMensual">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Prima Mensual</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.PrimaMensual}}</mat-cell>
+            <mat-header-cell class="col-sm-2" *matHeaderCellDef mat-sort-header>Prima Mensual</mat-header-cell>
+            <mat-cell class="col-sm-2" *matCellDef="let element">{{element.PrimaMensual}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions" stickyEnd>
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-header-cell class="col-sm-2" *matHeaderCellDef></mat-header-cell>
+            <mat-cell class="col-sm-2" *matCellDef="let row">
                 <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
                 <button mat-icon-button color="warn" (click)="onDelete(row.RowId)"><mat-icon>delete_outline</mat-icon></button>
             </mat-cell>

@@ -30,6 +30,13 @@ import { ExcepcionCapitalComponent } from './components/excepciones-prima-proyec
 import { ExcepcionEdadComponent } from './components/excepciones-prima-proyectada/excepcion-edad/excepcion-edad.component';
 import { ListaExcepcionesEdadComponent } from './components/excepciones-prima-proyectada/lista-excepciones-edad/lista-excepciones-edad.component';
 import { ExcepcionPrimaProyectadaService } from './services/excepcion-prima-proyectada.service';
+import { AdminComponent } from './pages/dashboard/admin/admin.component';
+import { LectorComponent } from './pages/dashboard/lector/lector.component';
+import { SupervisorComponent } from './pages/dashboard/supervisor/supervisor.component';
+import { AdminRoutingModule } from './pages/dashboard/admin/admin-routing.module';
+import { LectorRoutingModule } from './pages/dashboard/lector/lector-routing.module';
+import { SupervisorRoutingModule } from './pages/dashboard/supervisor/supervisor-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -49,7 +56,10 @@ import { ExcepcionPrimaProyectadaService } from './services/excepcion-prima-proy
     ListaExcepcionesCapitalComponent,
     ExcepcionCapitalComponent,
     ExcepcionEdadComponent,
-    ListaExcepcionesEdadComponent
+    ListaExcepcionesEdadComponent,
+    AdminComponent,
+    LectorComponent,
+    SupervisorComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,11 @@ import { ExcepcionPrimaProyectadaService } from './services/excepcion-prima-proy
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    APP_ROUTING
+    APP_ROUTING,
+    AdminRoutingModule,
+    LectorRoutingModule,
+    SupervisorRoutingModule,
+    AppRoutingModule
   ],
   providers: [ExcepcionPrimaProyectadaService , ExcepcionPolizaService, ExcepcionService, DatePipe, {provide: MatPaginatorIntl, useClass: ListaExcepcionesCapitalComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesEdadComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesPolizaComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesComponent}],
   bootstrap: [AppComponent],

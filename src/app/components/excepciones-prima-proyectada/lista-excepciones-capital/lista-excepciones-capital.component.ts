@@ -76,8 +76,10 @@ export class ListaExcepcionesCapitalComponent extends MatPaginatorIntl implement
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.maxWidth = "80%";
-    dialogConfig.maxHeight = "80%";
+    dialogConfig.width = "28%";
+    dialogConfig.height = "45%";
+    // dialogConfig.maxWidth = "80%";
+    // dialogConfig.maxHeight = "80%";
     this.dialog.open(ExcepcionCapitalComponent, dialogConfig).afterClosed()
     .subscribe(() => {
       this.refrescarData();

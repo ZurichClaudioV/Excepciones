@@ -22,7 +22,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     Material.MatIconModule,
     Material.MatSortModule,
     Material.MatPaginatorModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatTooltipModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -40,7 +41,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     Material.MatIconModule,
     Material.MatSortModule,
     Material.MatPaginatorModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatTooltipModule
   ],
   declarations: [],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}]

@@ -4,7 +4,7 @@ import { ExcepcionesPolizaComponent } from './components/excepciones-poliza/exce
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ExcepcionesPrimaProyectadaComponent } from './components/excepciones-prima-proyectada/excepciones-prima-proyectada/excepciones-prima-proyectada.component';
 
-const APP_ROUTES: Routes = [
+const routes: Routes = [
     // { path: 'excepciones', component: ExcepcionesComponent },
     { path: 'excepciones-prima-proyectada', component: ExcepcionesPrimaProyectadaComponent },
     { path: 'excepciones-poliza', component: ExcepcionesPolizaComponent },
@@ -13,4 +13,4 @@ const APP_ROUTES: Routes = [
     { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);
+export const APP_ROUTING = RouterModule.forRoot(routes);

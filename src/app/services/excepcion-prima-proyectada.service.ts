@@ -5,7 +5,7 @@ import { ExcepcionPrimaProyectada } from '../models/excepcion-prima-proyectada.m
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
-import { selectDistintoCero } from '../shared/validator';
+import { selectDistintoCero, limiteCapital, limiteEdad } from '../shared/validator';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class ExcepcionPrimaProyectadaService {
   constructor(private http: HttpClient) { }
 
   formCapital: FormGroup = new FormGroup ({
-    RowId: new FormControl(null),
+    RowId: new FormControl(''),
     Plan: new FormControl([0], [Validators.required, selectDistintoCero]),
     NombrePlan: new FormControl(''),
-    Capital: new FormControl(''),
+    Capital: new FormControl('', [Validators.required, limiteCapital(0, 99999), limiteEdad(1, 99)]),
     PrimaAnual: new FormControl(''),
     PrimaMensual: new FormControl('')
   });
@@ -27,7 +27,7 @@ export class ExcepcionPrimaProyectadaService {
 
   initializeFormGroupCapital() {
     this.formCapital.setValue({
-      RowId: null,
+      RowId: '',
       Plan: [0],
       NombrePlan: '',
       Capital: '',
@@ -37,7 +37,8 @@ export class ExcepcionPrimaProyectadaService {
   }
 
   ingresarCapital(formData) {
-    formData.RowId = null;
+    formData.RowId = '';
+    console.log(formData);
     return this.http.post(environment.apiUrl + '/PrimaProyectadas/', formData).toPromise();
   }
 
@@ -46,7 +47,8 @@ export class ExcepcionPrimaProyectadaService {
    }
 
   modificarExcepcionCapital(formData) {
-    return this.http.put(environment.apiUrl + '/PrimaProyectadas/Capital/' + formData.RowId.toString(), formData).toPromise();
+    console.log(formData);
+    return this.http.put(environment.apiUrl + '/PrimaProyectadas/' + formData.RowId.toString(), formData).toPromise();
   }
 
   eliminarExcepcionCapital(RowId): Observable<ExcepcionPrimaProyectada> {
