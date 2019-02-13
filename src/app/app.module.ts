@@ -24,6 +24,12 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { APP_ROUTING } from './app.routes';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { MatPaginatorIntl } from '@angular/material';
+import { ExcepcionesPrimaProyectadaComponent } from './components/excepciones-prima-proyectada/excepciones-prima-proyectada/excepciones-prima-proyectada.component';
+import { ListaExcepcionesCapitalComponent } from './components/excepciones-prima-proyectada/lista-excepciones-capital/lista-excepciones-capital.component';
+import { ExcepcionCapitalComponent } from './components/excepciones-prima-proyectada/excepcion-capital/excepcion-capital.component';
+import { ExcepcionEdadComponent } from './components/excepciones-prima-proyectada/excepcion-edad/excepcion-edad.component';
+import { ListaExcepcionesEdadComponent } from './components/excepciones-prima-proyectada/lista-excepciones-edad/lista-excepciones-edad.component';
+import { ExcepcionPrimaProyectadaService } from './services/excepcion-prima-proyectada.service';
 
 
 
@@ -38,22 +44,24 @@ import { MatPaginatorIntl } from '@angular/material';
     ExcepcionPolizaComponent,
     ListaExcepcionesPolizaComponent,
     NavbarComponent,
-    InicioComponent
+    InicioComponent,
+    ExcepcionesPrimaProyectadaComponent,
+    ListaExcepcionesCapitalComponent,
+    ExcepcionCapitalComponent,
+    ExcepcionEdadComponent,
+    ListaExcepcionesEdadComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    // AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    // AngularFireDatabaseModule,
-    // AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
     HttpClientModule,
     APP_ROUTING
   ],
-  providers: [ExcepcionPolizaService, ExcepcionService, DatePipe, {provide: MatPaginatorIntl, useClass: ListaExcepcionesPolizaComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesComponent}],
+  providers: [ExcepcionPrimaProyectadaService , ExcepcionPolizaService, ExcepcionService, DatePipe, {provide: MatPaginatorIntl, useClass: ListaExcepcionesCapitalComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesEdadComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesPolizaComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesComponent}],
   bootstrap: [AppComponent],
-  entryComponents: [ExcepcionPolizaComponent, ExcepcionComponent, MatConfirmDialogComponent] // se utiliza para asignar un popup de componente formulario
+  entryComponents: [ExcepcionCapitalComponent, ExcepcionEdadComponent, ExcepcionPolizaComponent, ExcepcionComponent, MatConfirmDialogComponent] // se utiliza para asignar un popup de componente formulario
 })
 export class AppModule { }

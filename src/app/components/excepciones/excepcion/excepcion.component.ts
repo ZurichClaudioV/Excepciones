@@ -27,7 +27,8 @@ export class ExcepcionComponent implements OnInit {
   isVisible = false;
   isLoadingResults = true;
 
-  displayedColumns: string[] = ['GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER', 'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS'];
+  displayedColumns: string[] = ['GTO_PR_BAS', 'TP_GTOPRBAS', 'GTO_X_PAGO', 'TP_GTOXPAGO', 'GTO_PR_REC', 'TP_GTOPRREC', 'PREMIO_PERM', 'TP_PREM_PER',
+                               'GTO_X_TRASP', 'TP_GTO_TRAS', 'CAR_RES_TOT', 'CAR_RES_PAR', 'CARGO_FIJO', 'GTO_FONDOS'];
 
   ngOnInit() {
 
@@ -39,7 +40,6 @@ export class ExcepcionComponent implements OnInit {
     } else {
       this.selected2 = this.service.form.get('NUM_EXCEP').value;
       this.onSelectedChange(this.selected2);
-      // this.service.form.controls['NUM_EXCEP'].setValue(this.service.form.);
     }
   }
 

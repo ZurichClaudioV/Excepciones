@@ -1,0 +1,26 @@
+<div class="container animated fadeIn fast">
+    <mat-toolbar color="primary">
+        <span class="fill-remaining-space"></span>
+        <span>Excepciones Prima Proyectada</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+    <br>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="capital-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Capital</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="edad-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Edad</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="capital-tab">
+            <br>
+            <app-lista-excepciones-capital></app-lista-excepciones-capital>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="edad-tab">
+            <br>
+            <app-lista-excepciones-edad></app-lista-excepciones-edad>
+        </div>
+    </div>
+</div>

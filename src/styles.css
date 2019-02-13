@@ -139,7 +139,7 @@ mat-footer-row mat-footer-cell {
 .confirm-dialog-container #no-button {
     height: 50px;
     width: 50%;
-    background-color: #fc7169;
+    background-color: #003399;
     color: white;
     border-radius: 0px;
 }
@@ -147,7 +147,7 @@ mat-footer-row mat-footer-cell {
 .confirm-dialog-container #yes-button {
     height: 50px;
     width: 50%;
-    background-color: #b6bece;
+    background-color: #003399;
     color: white;
     border-radius: 0px;
 }
