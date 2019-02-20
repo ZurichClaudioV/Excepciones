@@ -1,7 +1,14 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://10.117.3.69/WebApplication6/api',
-  authUrl: 'http://10.117.3.69/VIDA/Actuaria/Excepciones/token'
-  // authUrl: 'http://192.168.137.110/corporate/web/inspecciones/webapi/token',
+  apiUrl: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api',
+  authUrl: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/token',
+  intranetDesa: 'http://192.168.141.235/vida2/Comun/MenuSisvida/paginas/Login.aspx',
+  intranetProd: 'http://192.168.136.80/vida2/Comun/MenuSisvida/paginas/Login.aspx',
+  getClaims: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api/usuario',
+  userarioUrl: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api/usuario',
+  getPerfiles: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api/perfiles',
+
+  userIdleSeconds: 1800,
+  userIdleTimeoutSeconds: 30
 };
 

@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // import { AngularFireModule } from 'angularfire2';
 // import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { DatePipe } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { DatePipe, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,14 +30,10 @@ import { ExcepcionCapitalComponent } from './components/excepciones-prima-proyec
 import { ExcepcionEdadComponent } from './components/excepciones-prima-proyectada/excepcion-edad/excepcion-edad.component';
 import { ListaExcepcionesEdadComponent } from './components/excepciones-prima-proyectada/lista-excepciones-edad/lista-excepciones-edad.component';
 import { ExcepcionPrimaProyectadaService } from './services/excepcion-prima-proyectada.service';
-import { AdminComponent } from './pages/dashboard/admin/admin.component';
-import { LectorComponent } from './pages/dashboard/lector/lector.component';
-import { SupervisorComponent } from './pages/dashboard/supervisor/supervisor.component';
-import { AdminRoutingModule } from './pages/dashboard/admin/admin-routing.module';
-import { LectorRoutingModule } from './pages/dashboard/lector/lector-routing.module';
-import { SupervisorRoutingModule } from './pages/dashboard/supervisor/supervisor-routing.module';
-import { AppRoutingModule } from './app-routing.module';
-
+import { Globals } from './shared/globals';
+import { UserIdleModule } from 'angular-user-idle';
+import { LoadingModule } from './components/loading/loading.module';
+import { RequestInterceptor } from './interceptors/request.interceptor';
 
 
 @NgModule({
@@ -56,10 +52,7 @@ import { AppRoutingModule } from './app-routing.module';
     ListaExcepcionesCapitalComponent,
     ExcepcionCapitalComponent,
     ExcepcionEdadComponent,
-    ListaExcepcionesEdadComponent,
-    AdminComponent,
-    LectorComponent,
-    SupervisorComponent
+    ListaExcepcionesEdadComponent
   ],
   imports: [
     BrowserModule,
@@ -69,12 +62,13 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpClientModule,
     APP_ROUTING,
-    AdminRoutingModule,
-    LectorRoutingModule,
-    SupervisorRoutingModule,
-    AppRoutingModule
+    UserIdleModule,
+    LoadingModule
   ],
-  providers: [ExcepcionPrimaProyectadaService , ExcepcionPolizaService, ExcepcionService, DatePipe, {provide: MatPaginatorIntl, useClass: ListaExcepcionesCapitalComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesEdadComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesPolizaComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesComponent}],
+  providers: [Globals, ExcepcionPrimaProyectadaService , ExcepcionPolizaService,
+     ExcepcionService, DatePipe, {provide: MatPaginatorIntl, useClass: ListaExcepcionesCapitalComponent},
+      {provide: MatPaginatorIntl, useClass: ListaExcepcionesEdadComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesPolizaComponent}, {provide: MatPaginatorIntl, useClass: ListaExcepcionesComponent},
+       { provide: LocationStrategy, useClass: HashLocationStrategy }, { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent],
   entryComponents: [ExcepcionCapitalComponent, ExcepcionEdadComponent, ExcepcionPolizaComponent, ExcepcionComponent, MatConfirmDialogComponent] // se utiliza para asignar un popup de componente formulario
 })

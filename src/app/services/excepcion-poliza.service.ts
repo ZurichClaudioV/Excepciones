@@ -63,6 +63,8 @@ export class ExcepcionPolizaService {
       if (!value) {
         this.form.get("GTO_PR_BAS").disable();
         this.form.get("TP_GTOPRBAS").disable();
+        this.form.get("GTO_PR_BAS").value('');
+        this.form.get("TP_GTOPRBAS").value('');
       } else {
         this.form.get("GTO_PR_BAS").enable();
         this.form.get("TP_GTOPRBAS").enable();
@@ -73,6 +75,8 @@ export class ExcepcionPolizaService {
       if (!value) {
         this.form.get('GTO_X_PAGO').disable();
         this.form.get('TP_GTOXPAGO').disable();
+        this.form.get('GTO_X_PAGO').value('');
+        this.form.get('TP_GTOXPAGO').value('');
       } else {
         this.form.get('GTO_X_PAGO').enable();
         this.form.get('TP_GTOXPAGO').enable();
@@ -83,6 +87,8 @@ export class ExcepcionPolizaService {
       if (!value) {
         this.form.get('GTO_PR_REC').disable();
         this.form.get('TP_GTOPRREC').disable();
+        this.form.get('GTO_PR_REC').value('');
+        this.form.get('TP_GTOPRREC').value('');
       } else {
         this.form.get('GTO_PR_REC').enable();
         this.form.get('TP_GTOPRREC').enable();
@@ -93,6 +99,8 @@ export class ExcepcionPolizaService {
       if (!value) {
         this.form.get('PREMIO_PERM').disable();
         this.form.get('TP_PREM_PER').disable();
+        this.form.get('PREMIO_PERM').value('');
+        this.form.get('TP_PREM_PER').value('');
       } else {
         this.form.get('PREMIO_PERM').enable();
         this.form.get('TP_PREM_PER').enable();
@@ -103,6 +111,8 @@ export class ExcepcionPolizaService {
       if (!value) {
         this.form.get('GTO_X_TRASP').disable();
         this.form.get('TP_GTO_TRAS').disable();
+        this.form.get('GTO_X_TRASP').value('');
+        this.form.get('TP_GTO_TRAS').value('');
       } else {
         this.form.get('GTO_X_TRASP').enable();
         this.form.get('TP_GTO_TRAS').enable();
@@ -112,6 +122,7 @@ export class ExcepcionPolizaService {
     this.form.get("IND_CAR_RES").valueChanges.subscribe(value => {
       if (!value) {
         this.form.get('CAR_RES_TOT').disable();
+        this.form.get('CAR_RES_TOT').value('');
       } else {
         this.form.get('CAR_RES_TOT').enable();
       }
@@ -120,6 +131,7 @@ export class ExcepcionPolizaService {
     this.form.get("IND_CAR_REP").valueChanges.subscribe(value => {
       if (!value) {
         this.form.get('CAR_RES_PAR').disable();
+        this.form.get('CAR_RES_PAR').value('');
       } else {
         this.form.get('CAR_RES_PAR').enable();
       }
@@ -128,6 +140,7 @@ export class ExcepcionPolizaService {
     this.form.get("IND_GTO_FON").valueChanges.subscribe(value => {
       if (!value) {
         this.form.get('GTO_FONDOS').disable();
+        this.form.get('GTO_FONDOS').value('');
       } else {
         this.form.get('GTO_FONDOS').enable();
       }
@@ -136,6 +149,7 @@ export class ExcepcionPolizaService {
     this.form.get("IND_CAR_FIJ").valueChanges.subscribe(value => {
       if (!value) {
         this.form.get('CARGO_FIJO').disable();
+        this.form.get('CARGO_FIJO').value('');
       } else {
         this.form.get('CARGO_FIJO').enable();
       }
@@ -187,15 +201,15 @@ export class ExcepcionPolizaService {
     formData.RowId = 0;
     formData.FEC_INICIO = this.datepipe.transform(formData.FEC_INICIO, 'yyyyMMdd');
 
-    return this.http.post<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPolizas', formData);
+    return this.http.post<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPoliza', formData);
   }
 
   listaExcepcionesPoliza(): Observable<ExcepcionPoliza[]> {
-    return this.http.get<ExcepcionPoliza[]>(environment.apiUrl + '/ExcepcionesPolizas');
+    return this.http.get<ExcepcionPoliza[]>(environment.apiUrl + '/ExcepcionesPoliza');
    }
 
    listaNumExc(): Observable<Number[]> {
-    return this.http.get<Number[]>(environment.apiUrl + '/ExcepcionesPolizas/Excepcion/');
+    return this.http.get<Number[]>(environment.apiUrl + '/ExcepcionesPoliza/Excepcion/');
    }
 
 
@@ -205,16 +219,16 @@ export class ExcepcionPolizaService {
    }
 
    obtenerExcepcionPolizaPorId(RowId: string): Observable<ExcepcionPoliza> {
-    return this.http.get<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPolizas/' + RowId);
+    return this.http.get<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPoliza/' + RowId);
    }
 
   modificarExcepcionPoliza(formData): Observable<ExcepcionPoliza> {
     formData.FEC_INICIO = this.datepipe.transform(formData.FEC_INICIO, 'yyyyMMdd');
-    return this.http.put<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPolizas/' + formData.RowId.toString(), formData);
+    return this.http.put<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPoliza/' + formData.RowId.toString(), formData);
   }
 
   eliminarExcepcionPoliza(RowId: string): Observable<ExcepcionPoliza> {
-    return this.http.delete<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPolizas/' + RowId);
+    return this.http.delete<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPoliza/' + RowId);
   }
 
   populateForm(excepcionPoliza) {

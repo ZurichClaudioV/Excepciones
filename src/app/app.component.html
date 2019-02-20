@@ -3,6 +3,11 @@
 
 <div class="container main-container">
 
-    <router-outlet></router-outlet>
-
+    <div [hidden]="!loading" class="loader">
+        <div class="spinner"></div>
+        <app-loading></app-loading>
+    </div>
+    <div [hidden]="loading" class="router-output">
+        <router-outlet></router-outlet>
+    </div>
 </div>

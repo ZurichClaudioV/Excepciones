@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Auth } from '../shared/Auth';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 const headers = {
   headers: new HttpHeaders({
@@ -17,18 +17,18 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  getToken(tokenSau: string): Observable<Auth> {
+  getToken(token: string): Observable<Auth> {
     const params = new HttpParams()
       .set('grant_type', 'password')
-      .set('username', 'SAU')
-      .set('password', tokenSau);
+      .set('username', 'INTRA')
+      .set('password', token);
     return this.http.post<Auth>(environment.authUrl, params.toString(), headers);
   }
 
   refreshToken(token: string): Observable<Auth> {
     const params = new HttpParams()
       .set('grant_type', 'refresh_token')
-      .set('username', 'SAU')
+      .set('username', 'INTRA')
       .set('refresh_token', token);
     return this.http.post<Auth>(environment.authUrl, params.toString(), headers);
   }

@@ -11,16 +11,18 @@
             <!-- <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['inicio']">Inicio</a>
             </li> -->
-            <li class="nav-item" routerLinkActive="active">
+            <li *ngIf="userService.perfilMatch([1])" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['excepciones-poliza']">Excepciones Póliza</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li *ngIf="userService.perfilMatch([1])" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['excepciones']">Excepciones</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li *ngIf="userService.perfilMatch([1])" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['excepciones-prima-proyectada']">Excepciones Prima Proyectada</a>
             </li>
+            <li>
+                <a (click)="Logout()">Salir</a>
+            </li>
         </ul>
-
     </div>
 </nav>

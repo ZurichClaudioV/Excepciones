@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route } from '@angular/router';
+import { CanLoad, Route, Router } from '@angular/router';
 import { Globals } from '../shared/globals';
-import { Menu } from '../shared/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +9,22 @@ export class AuthGuard implements CanLoad {
 
   constructor(private globals: Globals) {}
 
-  canLoad(route: Route): boolean {
-    if (!this.globals || !this.globals.user || !this.globals.user.Menus || !this.globals.user.Menus.length) {
+  canLoad(): boolean {
+    if (!this.globals || !this.globals.user) {
       return false;
+    } else {
+      return true;
     }
 
-    return this.findRoute(route.path, this.globals.user.Menus);
+    // return this.findRoute(route.path);
   }
 
-  findRoute(route: string, menus: Menu[]): boolean {
-    for (const menu of menus) {
-      for (const subMenu of menu.SubMenus) {
-        if (subMenu.Url === route) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+  // findRoute(route: string): boolean {
+  //   if ('inicio' === route) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 
 }
