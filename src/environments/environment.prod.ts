@@ -2,6 +2,7 @@ export const environment = {
   production: true,
   apiUrl: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api',
   authUrl: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/token',
+  menuIntranet: 'http://192.168.141.235/VIDA2/Comun/MenuSisVida/paginas/MenuPrincipal.aspx',
   intranetDesa: 'http://192.168.141.235/vida2/Comun/MenuSisvida/paginas/Login.aspx',
   intranetProd: 'http://192.168.136.80/vida2/Comun/MenuSisvida/paginas/Login.aspx',
   getClaims: 'http://192.168.141.235/VIDA2/Actuaria/Excepciones/WebApi/api/usuario',

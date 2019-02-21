@@ -20,8 +20,10 @@
             <li *ngIf="userService.perfilMatch([1])" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['excepciones-prima-proyectada']">Excepciones Prima Proyectada</a>
             </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
             <li>
-                <a (click)="Logout()">Salir</a>
+                <button mat-raised-button color="primary" type="submit" (click)="Logout()">Salir</button>
             </li>
         </ul>
     </div>

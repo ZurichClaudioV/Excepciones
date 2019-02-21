@@ -38,7 +38,7 @@ export class ExcepcionPrimaProyectadaService {
 
   ingresarCapital(formData) {
     formData.RowId = '';
-    console.log(formData);
+    // console.log(formData);
     return this.http.post(environment.apiUrl + '/PrimaProyectada/', formData).toPromise();
   }
 
@@ -46,8 +46,12 @@ export class ExcepcionPrimaProyectadaService {
     return this.http.get<ExcepcionPrimaProyectada[]>(environment.apiUrl + '/PrimaProyectada/Capital');
   }
 
+  cargarCombobox(): Observable<ExcepcionPrimaProyectada[]> {
+    return this.http.get<ExcepcionPrimaProyectada[]>(environment.apiUrl + '/PrimaProyectada/Planes');
+  }
+
   modificarExcepcionCapital(formData) {
-    console.log(formData);
+    // console.log(formData);
     return this.http.put(environment.apiUrl + '/PrimaProyectada/' + formData.RowId.toString(), formData).toPromise();
   }
 
@@ -56,6 +60,7 @@ export class ExcepcionPrimaProyectadaService {
   }
 
   populateFormCapital(excepcionCapital) {
+    console.log(excepcionCapital);
     this.formCapital.setValue(_.omit(excepcionCapital, 'Edad'));
   }
 

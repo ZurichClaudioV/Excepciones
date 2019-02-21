@@ -16,6 +16,7 @@ export class ExcepcionEdadComponent implements OnInit {
     public dialogRef: MatDialogRef<ExcepcionEdadComponent>) { }
 
 listaPlan: ExcepcionPrimaProyectada[];
+listaPlanCombo: ExcepcionPrimaProyectada[];
 selected;
 position: TooltipPosition = 'right';
 
@@ -27,7 +28,7 @@ position: TooltipPosition = 'right';
       this.service.formCapital.get('Plan').enable();
       this.service.formCapital.get('Capital').enable();
     } else {
-      this.selected = this.service.formCapital.get('NombrePlan').value;
+      this.selected = this.service.formCapital.get('Plan').value;
       this.service.formCapital.get('Plan').disable();
       this.service.formCapital.get('Capital').disable();
     }
@@ -73,8 +74,9 @@ position: TooltipPosition = 'right';
   }
 
   populateListaPlan() {
-      this.service.listaExcepcionesEdad().subscribe(res => {
-        this.listaPlan = res;
+    this.service.cargarCombobox().subscribe(res => {
+        console.log(res);
+        this.listaPlanCombo = res;
     });
   }
 

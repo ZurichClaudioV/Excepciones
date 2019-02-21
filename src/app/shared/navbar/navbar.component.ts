@@ -23,7 +23,8 @@ export class NavbarComponent implements OnInit {
   Logout() {
     sessionStorage.removeItem('auth');
     sessionStorage.removeItem('userPerfil');
-    window.location.replace(environment.intranetDesa);
+    window.location.replace(environment.menuIntranet);
+    // window.location.replace(environment.intranetDesa);
   }
 
 }

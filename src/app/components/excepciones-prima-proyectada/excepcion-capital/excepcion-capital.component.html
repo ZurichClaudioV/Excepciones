@@ -11,7 +11,7 @@
                 <mat-form-field>
                     <mat-select [(ngModel)]="selected" placeholder="Plan" formControlName="Plan" required>
                         <mat-option matTooltip="Seleccione una opción" [matTooltipPosition]="position" value="0">Seleccione una opción</mat-option>
-                        <mat-option matTooltip="{{plan.NombrePlan}}" [matTooltipPosition]="position" *ngFor="let plan of listaPlan" [value]="plan.Plan">{{ plan.NombrePlan }}</mat-option>
+                        <mat-option matTooltip="{{plan.NombrePlan}}" [matTooltipPosition]="position" *ngFor="let plan of listaPlanCombo" [value]="plan.Plan">{{ plan.NombrePlan }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="service.formCapital.controls.Plan.errors?.required">Este campo es obligatorio.</mat-error>
                     <mat-error *ngIf="service.formCapital.controls.Plan.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input type="number" formControlName="PrimaAnual" matInput placeholder="Prima Anual*" required>
+                    <input type="number" formControlName="PrimaAnual" matInput placeholder="Prima Anual Sistema" required>
                     <mat-error>Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input type="number" formControlName="PrimaMensual" matInput placeholder="Prima Mensual*" required>
+                    <input type="number" formControlName="PrimaMensual" matInput placeholder="Prima Mensual (Mensaje)" required>
                     <mat-error>Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>

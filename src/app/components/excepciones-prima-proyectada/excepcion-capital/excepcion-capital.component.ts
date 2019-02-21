@@ -16,6 +16,7 @@ export class ExcepcionCapitalComponent implements OnInit {
     public dialogRef: MatDialogRef<ExcepcionCapitalComponent>) { }
 
 listaPlan: ExcepcionPrimaProyectada[];
+listaPlanCombo: ExcepcionPrimaProyectada[];
 selected;
 position: TooltipPosition = 'right';
 
@@ -27,8 +28,8 @@ position: TooltipPosition = 'right';
         this.service.formCapital.get('Plan').enable();
         this.service.formCapital.get('Capital').enable();
     } else {
-      this.selected = this.service.formCapital.get('NombrePlan').value;
-      console.log(this.selected);
+      this.selected = this.service.formCapital.get('Plan').value;
+      // console.log(this.selected);
       this.service.formCapital.get('Plan').disable();
       this.service.formCapital.get('Capital').disable();
       // this.onSelectedChange(this.selected);
@@ -76,8 +77,8 @@ position: TooltipPosition = 'right';
   }
 
   populateListaPlan() {
-      this.service.listaExcepcionCapital().subscribe(res => {
-      this.listaPlan = res;
+      this.service.cargarCombobox().subscribe(res => {
+      this.listaPlanCombo = res;
     });
   }
 

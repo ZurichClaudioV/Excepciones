@@ -10,8 +10,8 @@ const routes: Routes = [
     { path: 'excepciones-prima-proyectada', component: ExcepcionesPrimaProyectadaComponent, canLoad: [AuthGuard] },
     { path: 'excepciones-poliza', component: ExcepcionesPolizaComponent, canLoad: [AuthGuard] },
     { path: 'excepciones', component: ExcepcionesComponent, canLoad: [AuthGuard] },
-    { path: 'inicio', component: InicioComponent },
-    { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
+    { path: 'inicio', component: InicioComponent},
+    { path: '**', pathMatch: 'full', redirectTo: 'inicio'}
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(routes);

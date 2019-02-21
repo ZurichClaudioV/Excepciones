@@ -17,6 +17,9 @@ function initNgModule() {
 }
 
 const params = new RegExp('[\\?&]token=([^&#]*)').exec(window.location.href);
+let url = window.location.href.split('?')[0];
+
+window.history.pushState({}, document.title, url);
 
 // Si no viene el token de intranet como parámetro y no esté guardado en sesión redirecciona a intranet nuevamente
 if (!params && !sessionStorage.getItem('auth')) {
@@ -39,6 +42,7 @@ if (!params && !sessionStorage.getItem('auth')) {
       window.location.replace(environment.intranetDesa);
     });
   } else {
+    // window.location.  replareplaceState.
     initNgModule();
   }
 }
