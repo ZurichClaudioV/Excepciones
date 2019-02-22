@@ -24,7 +24,6 @@ export class NavbarComponent implements OnInit {
     sessionStorage.removeItem('auth');
     sessionStorage.removeItem('userPerfil');
     window.location.replace(environment.menuIntranet);
-    // window.location.replace(environment.intranetDesa);
   }
 
 }

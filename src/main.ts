@@ -23,7 +23,7 @@ window.history.pushState({}, document.title, url);
 
 // Si no viene el token de intranet como parámetro y no esté guardado en sesión redirecciona a intranet nuevamente
 if (!params && !sessionStorage.getItem('auth')) {
-  window.location.replace(environment.intranetDesa);
+  window.location.replace(environment.intranet);
 } else {
   if (!sessionStorage.getItem('auth')) {
     const injector = Injector.create({
@@ -39,7 +39,7 @@ if (!params && !sessionStorage.getItem('auth')) {
       initNgModule();
     }, error => {
       console.log(error);
-      window.location.replace(environment.intranetDesa);
+      window.location.replace(environment.intranet);
     });
   } else {
     // window.location.  replareplaceState.

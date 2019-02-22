@@ -214,7 +214,6 @@ export class ExcepcionPolizaService {
 
 
    obtenerExcepcionPolizaPorNumExc(NUM_EXC: Number): Observable<ExcepcionPoliza> {
-    // http://10.117.3.69/WebApplication6/api/ExcepcionesPolizas/Excepcion/1
     return this.http.get<ExcepcionPoliza>(environment.apiUrl + '/ExcepcionesPoliza/Excepcion/' + NUM_EXC);
    }
 

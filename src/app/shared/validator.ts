@@ -1,5 +1,4 @@
 import { AbstractControl, FormGroup, FormControl, ValidatorFn } from '@angular/forms';
-// import { DatePipe } from '@angular/common';
 
     export function selectDistintoCero(control: AbstractControl) {
         if (control && (control.value != null || control.value != undefined)) {

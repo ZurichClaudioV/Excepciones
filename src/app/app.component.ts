@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
   logout() {
     sessionStorage.removeItem('auth');
     sessionStorage.removeItem('userPerfil');
-    window.location.replace(environment.intranetDesa);
+    window.location.replace(environment.intranet);
   }
 
 }
