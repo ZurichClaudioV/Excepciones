@@ -42,7 +42,6 @@ if (!params && !sessionStorage.getItem('auth')) {
       window.location.replace(environment.intranet);
     });
   } else {
-    // window.location.  replareplaceState.
     initNgModule();
   }
 }

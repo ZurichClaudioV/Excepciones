@@ -23,7 +23,7 @@ export class ExcepcionService {
     NUM_POLIZ: new FormControl(''),
     SER_POLIZ: new FormControl(''),
 
-    // no usable
+    // no es necesario
     FILLER: new FormControl(''),
   });
 
@@ -37,7 +37,7 @@ export class ExcepcionService {
       NUM_POLIZ: '',
       SER_POLIZ: '',
 
-      // no usable
+      // no es necesario
       FILLER: ''
     });
   }

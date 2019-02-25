@@ -46,7 +46,6 @@ export class ExcepcionPolizaComponent implements OnInit {
     if (this.service.form.valid) {
       if (!this.service.form.get('RowId').value) {
         // Entra acá si es un ingreso nuevo
-        // console.log(this.service.form.value);
         this.service.ingresarExcepcionPoliza(this.service.form.value).subscribe();
         this.service.form.reset();
         this.service.initializeFormGroup();
@@ -74,8 +73,6 @@ export class ExcepcionPolizaComponent implements OnInit {
       } else {
         this.service.form.controls[`${controlHijoUno}`].enable();
       }
-
-      // console.log(this.service.form.controls[`${formControl}`].value);
     } else {
       this.service.form.controls[`${controlPadre}`].setValue(0);
 

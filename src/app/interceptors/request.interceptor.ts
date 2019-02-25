@@ -43,7 +43,6 @@ export class RequestInterceptor implements HttpInterceptor {
 
         return this.authService.refreshToken(refreshToken).pipe(
             switchMap((auth: Auth) => {
-                // console.log('refresh token', auth);
                 sessionStorage.setItem('auth', JSON.stringify(auth));
                 const newRequest = request.clone({
                     setHeaders: { Authorization: auth.token_type + ' ' + auth.access_token }

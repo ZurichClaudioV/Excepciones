@@ -13,8 +13,8 @@
                         <mat-option matTooltip="Seleccione una opción" [matTooltipPosition]="position" value="0">Seleccione una opción</mat-option>
                         <mat-option matTooltip="{{plan.NombrePlan}}" [matTooltipPosition]="position" *ngFor="let plan of listaPlanCombo" [value]="plan.Plan">{{ plan.NombrePlan }}</mat-option>
                     </mat-select>
-                    <mat-error *ngIf="service.formCapital.controls.Plan.errors?.required">Este campo es obligatorio.</mat-error>
-                    <mat-error *ngIf="service.formCapital.controls.Plan.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
+                    <mat-error *ngIf="(!!service.formCapital.controls.Plan.dirty || !!service.formCapital.controls.Plan.touched) && !!service.formCapital.controls.Plan.errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="!!service.formCapital.controls.Plan.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input type="number" formControlName="Capital" matInput placeholder="Capital*" maxlength="5" required>
-                    <mat-error *ngIf="service.formCapital.controls.Capital.errors?.required">Este campo es obligatorio.</mat-error>
-                    <mat-error *ngIf="service.formCapital.controls.Capital.errors?.limiteCapital">Debe ingresar un máximo de 5 caracteres.</mat-error>
+                    <input type="number" formControlName="Capital" matInput placeholder="Capital" maxlength="5" required>
+                    <mat-error *ngIf="(!!service.formCapital.controls.Capital.dirty || !!service.formCapital.controls.Capital.touched) && !!service.formCapital.controls.Capital.errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="!!service.formCapital.controls.Capital.errors?.limiteCapital">Debe ingresar un máximo de 5 caracteres.</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-4">
                 <mat-form-field>
                     <input type="number" formControlName="PrimaAnual" matInput placeholder="Prima Anual Sistema" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="(!!service.formCapital.controls.PrimaAnual.dirty || !!service.formCapital.controls.PrimaAnual.touched) && !!service.formCapital.controls.PrimaAnual.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="col-sm-4">
                 <mat-form-field>
                     <input type="number" formControlName="PrimaMensual" matInput placeholder="Prima Mensual (Mensaje)" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="(!!service.formCapital.controls.PrimaMensual.dirty || !!service.formCapital.controls.PrimaMensual.touched) && !!service.formCapital.controls.PrimaMensual.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
         </div>

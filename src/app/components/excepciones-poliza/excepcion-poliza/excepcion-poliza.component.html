@@ -9,14 +9,14 @@
             <div class="col-sm-4">
                 <input type="hidden" formControlName="RowId">
                 <mat-form-field>
-                    <input formControlName="POL_SERIE" matInput placeholder="Serie*" maxlength="1" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <input formControlName="POL_SERIE" matInput placeholder="Serie" maxlength="1" required>
+                    <mat-error *ngIf="(!!service.form.controls.POL_SERIE.dirty || !!service.form.controls.POL_SERIE.touched) && !!service.form.controls.POL_SERIE.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input formControlName="POL_NRO" matInput placeholder="Número Póliza*" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <input formControlName="POL_NRO" matInput placeholder="Número Póliza" required>
+                    <mat-error *ngIf="(!!service.form.controls.POL_NRO.dirty || !!service.form.controls.POL_NRO.touched) && !!service.form.controls.POL_NRO.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -24,7 +24,7 @@
                     <input matInput [matDatepicker]="picker" formControlName="FEC_INICIO" placeholder="Fecha de Inicio" required [min]=minDate>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="(!!service.form.controls.FEC_INICIO.dirty || !!service.form.controls.FEC_INICIO.touched) && !!service.form.controls.FEC_INICIO.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
         </div>

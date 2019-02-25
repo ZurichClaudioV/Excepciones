@@ -13,8 +13,8 @@
                         <mat-option value="0">Seleccione una opción</mat-option>
                         <mat-option *ngFor="let numExc of listaNumExc" [value]="numExc">{{ numExc }}</mat-option>
                     </mat-select>
-                    <mat-error *ngIf="service.form.controls.NUM_EXCEP.errors?.required">Este campo es obligatorio.</mat-error>
-                    <mat-error *ngIf="service.form.controls.NUM_EXCEP.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
+                    <mat-error *ngIf="(!!service.form.controls.NUM_EXCEP.dirty || !!service.form.controls.NUM_EXCEP.touched) && !!service.form.controls.NUM_EXCEP.errors?.required">Este campo es obligatorio.</mat-error>
+                    <mat-error *ngIf="!!service.form.controls.NUM_EXCEP.errors?.selectDistintoCero">Debe seleccionar una opción.</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field>
-                    <input formControlName="NUM_SOLIC" matInput placeholder="Número de Solicitud*" required>
-                    <mat-error>Este campo es obligatorio.</mat-error>
+                    <input formControlName="NUM_SOLIC" matInput placeholder="Número de Solicitud" required>
+                    <mat-error *ngIf="(!!service.form.controls.NUM_SOLIC.dirty || !!service.form.controls.NUM_SOLIC.touched) && !!service.form.controls.NUM_SOLIC.errors?.required">Este campo es obligatorio.</mat-error>
                 </mat-form-field>
             </div>
         </div>

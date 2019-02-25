@@ -81,9 +81,7 @@ export class AppComponent implements OnInit {
     this.userService.get().subscribe((user: User) => {
       this.globals.user = user;
       this.router.navigate(['/inicio']);
-      // console.log(user);
       sessionStorage.setItem('userPerfil', user.Perfil.Id.toString());
-      // this.showDashboard(); reemplazar con el getrole, etc.
     }, error => {
       Alert.error(error);
     });

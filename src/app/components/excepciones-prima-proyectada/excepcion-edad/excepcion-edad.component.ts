@@ -75,7 +75,6 @@ position: TooltipPosition = 'right';
 
   populateListaPlan() {
     this.service.cargarCombobox().subscribe(res => {
-        console.log(res);
         this.listaPlanCombo = res;
     });
   }
